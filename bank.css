@@ -470,7 +470,129 @@ section[id] {
 }
 
 /* ============================================================
-   9. FOOTER
+   9. SUPPORT
+   ============================================================ */
+.support {
+  background-color: var(--white);
+  padding: 80px 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.support__inner {
+  width: min(800px, 90%);
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.support__inner h2 {
+  font-weight: 300;
+  font-size: 2em;
+}
+
+.support__inner > p {
+  color: var(--gray-blue);
+}
+
+.support__faq {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.support__faq details {
+  background-color: var(--light-gray);
+  border-radius: var(--radius-card);
+  padding: 18px 22px;
+  cursor: pointer;
+  transition: background-color var(--transition);
+}
+
+.support__faq details:hover {
+  background-color: hsl(0, 0%, 95%);
+}
+
+.support__faq details[open] {
+  background-color: hsl(0, 0%, 96%);
+}
+
+.support__faq summary {
+  font-weight: 500;
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.support__faq summary::-webkit-details-marker {
+  display: none;
+}
+
+.support__faq summary::after {
+  content: "+";
+  font-size: 1.4em;
+  font-weight: 300;
+  color: var(--primary-cyan);
+  transition: transform var(--transition);
+}
+
+.support__faq details[open] summary::after {
+  content: "−";
+}
+
+.support__faq details p {
+  margin-top: 12px;
+  color: var(--gray-blue);
+  font-size: 0.95em;
+}
+
+/* ============================================================
+   10. PRIVACY
+   ============================================================ */
+.privacy {
+  background-color: var(--light-gray);
+  padding: 80px 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.privacy__inner {
+  width: min(800px, 90%);
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.privacy__inner h2 {
+  font-weight: 300;
+  font-size: 2em;
+}
+
+.privacy__inner > p:first-of-type {
+  color: var(--gray-blue);
+  font-size: 0.9em;
+  margin-bottom: 10px;
+}
+
+.privacy__inner h3 {
+  font-weight: 500;
+  font-size: 1.1em;
+  margin-top: 15px;
+}
+
+.privacy__inner p {
+  color: var(--gray-blue);
+  font-size: 0.95em;
+}
+
+.privacy__inner a {
+  color: var(--primary-cyan);
+  text-decoration: underline;
+}
+
+/* ============================================================
+   11. FOOTER
    ============================================================ */
 .footer {
   background-color: var(--dark-blue);
@@ -552,7 +674,7 @@ section[id] {
 }
 
 /* ============================================================
-   10. RESPONSIVE
+   12. RESPONSIVE
    ============================================================ */
 @media (max-width: 900px) {
   .features__grid,
@@ -680,6 +802,24 @@ section[id] {
   }
 
   .careers__inner {
+    width: 90%;
+  }
+
+  /* ---- SUPPORT ---- */
+  .support {
+    padding: 60px 20px;
+  }
+
+  .support__inner {
+    width: 90%;
+  }
+
+  /* ---- PRIVACY ---- */
+  .privacy {
+    padding: 60px 20px;
+  }
+
+  .privacy__inner {
     width: 90%;
   }
 
