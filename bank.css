@@ -78,7 +78,12 @@ a {
   border-radius: 4px;
 }
 
-/* Botón reutilizable (¡esto elimina 4 repeticiones!) */
+/* Evita que la navbar fija tape los títulos al scrollear */
+section[id] {
+  scroll-margin-top: 90px;
+}
+
+/* Botón reutilizable */
 .btn-primary {
   background-image: var(--gradient-brand);
   border: none;
@@ -150,7 +155,7 @@ a {
    ============================================================ */
 .hero {
   background-color: var(--very-light);
-  min-height: 100dvh;           /* mejor que 100vh en móviles */
+  min-height: 100dvh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -211,7 +216,7 @@ a {
 }
 
 /* ============================================================
-   5. FEATURES (antes section-2)
+   5. FEATURES (About)
    ============================================================ */
 .features {
   display: flex;
@@ -271,7 +276,7 @@ a {
 }
 
 /* ============================================================
-   6. ARTICLES (antes section-3)
+   6. ARTICLES (Blog)
    ============================================================ */
 .articles {
   display: flex;
@@ -349,7 +354,123 @@ a {
 }
 
 /* ============================================================
-   7. FOOTER
+   7. CONTACT
+   ============================================================ */
+.contact {
+  background-color: var(--white);
+  padding: 80px 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.contact__inner {
+  width: min(600px, 90%);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.contact__inner h2 {
+  font-weight: 300;
+  font-size: 2em;
+}
+
+.contact__inner > p {
+  color: var(--gray-blue);
+}
+
+.contact__form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.contact__form label {
+  font-size: 0.9em;
+  font-weight: 500;
+}
+
+.contact__form input,
+.contact__form textarea {
+  font-family: inherit;
+  font-size: 1em;
+  padding: 10px 14px;
+  border: 1px solid hsl(0, 0%, 85%);
+  border-radius: 8px;
+  transition: border-color var(--transition), box-shadow var(--transition);
+}
+
+.contact__form input:focus,
+.contact__form textarea:focus {
+  outline: none;
+  border-color: var(--primary-cyan);
+  box-shadow: 0 0 0 3px hsla(199, 93%, 43%, 0.2);
+}
+
+.contact__form button {
+  align-self: flex-start;
+  margin-top: 10px;
+}
+
+/* ============================================================
+   8. CAREERS
+   ============================================================ */
+.careers {
+  background-color: var(--light-gray);
+  padding: 80px 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.careers__inner {
+  width: min(800px, 90%);
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.careers__inner h2 {
+  font-weight: 300;
+  font-size: 2em;
+}
+
+.careers__inner > p {
+  color: var(--gray-blue);
+}
+
+.careers__list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.careers__list li {
+  background-color: var(--white);
+  padding: 20px 25px;
+  border-radius: var(--radius-card);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+
+.careers__list li:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.08);
+}
+
+.careers__list h3 {
+  font-weight: 500;
+  font-size: 1.05em;
+  margin-bottom: 4px;
+}
+
+.careers__list p {
+  color: var(--gray-blue);
+  font-size: 0.9em;
+}
+
+/* ============================================================
+   9. FOOTER
    ============================================================ */
 .footer {
   background-color: var(--dark-blue);
@@ -431,13 +552,14 @@ a {
 }
 
 /* ============================================================
-   8. RESPONSIVE (mobile-first no, pero limpio)
+   10. RESPONSIVE
    ============================================================ */
 @media (max-width: 900px) {
   .features__grid,
   .articles__grid {
     flex-wrap: wrap;
   }
+
   .features__header p {
     width: 100%;
   }
@@ -446,10 +568,11 @@ a {
 @media (max-width: 800px) {
   /* ---- NAV ---- */
   .nav-contact {
-    display: none;            /* oculto por defecto */
+    display: none;
   }
+
   .nav-contact.is-open {
-    display: flex;            /* tu JS debe toggle esta clase */
+    display: flex;
     position: absolute;
     top: 90px;
     left: 50%;
@@ -464,15 +587,23 @@ a {
     gap: 20px;
     z-index: 20;
   }
+
   .nav-contact.is-open a {
     color: hsl(0, 0%, 37%);
   }
+
   .nav-contact.is-open a:hover {
     color: var(--primary-green);
     border: none;
   }
-  .nav-btn button { display: none; }
-  .boton button  { display: block; }
+
+  .nav-btn button {
+    display: none;
+  }
+
+  .boton button {
+    display: block;
+  }
 
   /* ---- HERO ---- */
   .hero {
@@ -480,6 +611,7 @@ a {
     min-height: auto;
     padding-bottom: 40px;
   }
+
   .hero__mockup {
     width: 100%;
     min-height: 350px;
@@ -487,23 +619,29 @@ a {
     background-position: center top;
     background-size: contain;
   }
+
   .hero__mockup img {
     width: 90%;
     transform: translateY(-40px);
   }
+
   .hero__text {
     width: 100%;
     align-items: center;
     text-align: center;
     padding: 40px 20px;
   }
-  .hero__text h1 { font-size: 2em; }
+
+  .hero__text h1 {
+    font-size: 2em;
+  }
 
   /* ---- FEATURES ---- */
   .features__grid {
     flex-direction: column;
     align-items: center;
   }
+
   .feature-card {
     width: 80%;
     text-align: center;
@@ -516,9 +654,33 @@ a {
     flex-direction: column;
     align-items: center;
   }
+
   .article-card {
     width: 90%;
     margin-bottom: 20px;
+  }
+
+  /* ---- CONTACT ---- */
+  .contact {
+    padding: 60px 20px;
+  }
+
+  .contact__inner {
+    width: 90%;
+  }
+
+  .contact__form button {
+    align-self: stretch;
+    text-align: center;
+  }
+
+  /* ---- CAREERS ---- */
+  .careers {
+    padding: 60px 20px;
+  }
+
+  .careers__inner {
+    width: 90%;
   }
 
   /* ---- FOOTER ---- */
@@ -527,9 +689,13 @@ a {
     min-height: 80vh;
     text-align: center;
   }
+
   .footer__links {
     flex-direction: column;
     gap: 20px;
   }
-  .footer__col { gap: 15px; }
+
+  .footer__col {
+    gap: 15px;
+  }
 }
